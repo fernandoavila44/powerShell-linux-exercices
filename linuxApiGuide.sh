@@ -7,13 +7,13 @@
 
 # 1.Api fetching
 
-echo "Obteniendo datos de la API..."
+# echo "Obteniendo datos de la API..."
 
-response=$(curl https://rickandmortyapi.com/api/character)
+# response=$(curl https://rickandmortyapi.com/api/character)
 
-echo "Datos obtenidos:"
+# echo "Datos obtenidos:"
 
-echo "$response" | jq .
+# echo "$response" | jq .
 
 # 2.Api Post 
 
@@ -36,9 +36,10 @@ echo "$response" | jq .
 
 # 4.
 
-# echo "Obteniendo datos de la API..."
-# response=$(curl -s https://rickandmortyapi.com/api/character)
+echo "Obteniendo datos de la API..."
+response=$(curl -s https://rickandmortyapi.com/api/character)
 
-# for characters in $(echo "$response.results" | jq -c '.[]'); do
-#     echo $characters | jq
-# done
+echo "$response" | jq -c '.results[]' | while read -r character; do
+    name=$(echo "$character" | jq -r '.name')
+    echo "Nombre del personaje: $name"
+done
