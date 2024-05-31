@@ -107,7 +107,7 @@ function SumarNumerosPares {
 
 
 $sumaPares = SumarNumerosPares -arreglo $numeros
-Write-Output "La suma de los números pares del arreglo es: $sumaPares"
+Write-Output "La suma de los numeros pares del arreglo es: $sumaPares"
 }
 Default {}
 }
