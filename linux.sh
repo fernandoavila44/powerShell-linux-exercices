@@ -44,3 +44,22 @@
 # echo "$data" | jq .
 
 # 5
+
+# Intentando obtener datos de un endpoint que no existe para provocar un error 404
+echo "Intentando obtener datos de un endpoint inexistente..."
+
+# Realiza la solicitud y captura la respuesta y el código de estado HTTP
+response=$(curl -s -w "\n%{http_code}" https://jsonplaceholder.typicode.com/nonexistentendpoint)
+http_code=$(echo "$response" | tail -n 1)
+response_body=$(echo "$response" | sed '$d')
+
+
+# Manejo del error
+if [ "$http_code" -ne 200 ]; then
+    echo "Error al obtener datos de la API. Código de estado HTTP: $http_code"
+    echo "Mensaje de error de la API:"
+    echo "$response_body" | jq '.'
+else
+    echo "Datos obtenidos correctamente:"
+    echo "$response_body" | jq '.'
+fi
