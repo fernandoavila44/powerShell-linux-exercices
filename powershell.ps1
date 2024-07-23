@@ -1,5 +1,13 @@
 # 1. Crear una funcion que me diga si un número es par o no
-
+function NumeroPar($Par) {
+$Resultado = $Par % 2
+ If ($Resultado -eq 0) {
+    Write-Output "El numero $Par es par"
+ } 
+ else {
+    Write-Output "El numero $Par no es par"
+ } 
+}
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
@@ -12,3 +20,5 @@
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
 
 #Prueba
+
+NumeroPar 10
