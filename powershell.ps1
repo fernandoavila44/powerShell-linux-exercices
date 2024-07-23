@@ -11,4 +11,4 @@
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
 
-
+#Prueba
