@@ -17,6 +17,7 @@ if (Par -num $num) {
     Write-Output "$num, es un numero impar."
 }
 
+
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
@@ -34,10 +35,10 @@ for ($i = 1; $i -le 100; $i++) {
     }
 }
 
+
 # 3.Dado el siguiente arreglo, crear una funcion que me diga si el número que pasamos por parámetro existe en el arreglo
 # $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
- 
 $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 function ExisteNumero {
     param ([int]$numero,[int[]]$arreglo)
@@ -56,7 +57,29 @@ if (ExisteNumero -numero $numero -arreglo $numeros) {
     Write-Output "El numero $numero no existe."
 }
 
+
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
+
+$numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+function Suma{
+    param (
+        [int[]]$arreglo
+    )
+
+    $suma = 0
+    foreach ($numero in $arreglo) {
+        $suma += $numero
+    }
+    return $suma
+}
+
+$sumaTotal = Suma -arreglo $numeros
+Write-Output "La suma del arreglo es: $sumaTotal"
+
+
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
+
+
 
 
