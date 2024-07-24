@@ -33,6 +33,20 @@ function divisible3y5 {
 
 # 3.Dado el siguiente arreglo, crear una funcion que me diga si el número que pasamos por parámetro existe en el arreglo
 # $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+function ElNumeroExiste ($Pepe) {
+    $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    foreach ($i in $numeros) {
+        if ($pepe -eq $i) {
+           $Existe = 1
+           Write-Output "El numero $pepe existe en el arreglo"
+           break 
+        }
+    }
+    if ($Existe -ne 1){
+        Write-Output "El numero $pepe no existe en el arreglo"
+    }
+
+}
 
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
@@ -40,4 +54,5 @@ function divisible3y5 {
 #Prueba
 
 #NumeroPar 10
-divisible3y5
+#divisible3y5
+ElNumeroExiste 5
