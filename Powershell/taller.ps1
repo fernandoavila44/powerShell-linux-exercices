@@ -1,5 +1,22 @@
 # 1. Crear una funcion que me diga si un número es par o no
 
+function Par{
+    param ([int]$num)
+
+    if ($num % 2 -eq 0) {
+        return $true
+    } else {
+        return $false
+    }
+}
+
+$num = 263
+if (Par -num $num) {
+    Write-Output "$num, es un numero par."
+} else {
+    Write-Output "$num, es un numero impar."
+}
+
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
