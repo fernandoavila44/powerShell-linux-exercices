@@ -12,6 +12,24 @@ $Resultado = $Par % 2
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
 # Devuelve FizzBuzz si el número es divisible por 3 y por 5.
+function divisible3y5 {
+    for ($i = 0; $i -le 100; $i++) {
+        $Div3 = $i % 3
+        $Div5 = $i % 5
+        if ($Div3 -eq 0 -and $Div5 -eq 0) {
+            Write-Output "FizzBuzz"
+        }
+        elseif ($Div3 -eq 0 -and $Div5 -ne 0) {
+            Write-Output "Fizz"
+        }
+        elseif ($Div3 -ne 0 -and $Div5 -eq 0) {
+            Write-Output "Buzz"
+        } 
+        else {
+            Write-Output $i
+        }
+    }
+    }
 
 # 3.Dado el siguiente arreglo, crear una funcion que me diga si el número que pasamos por parámetro existe en el arreglo
 # $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -21,4 +39,5 @@ $Resultado = $Par % 2
 
 #Prueba
 
-NumeroPar 10
+#NumeroPar 10
+divisible3y5
