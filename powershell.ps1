@@ -49,10 +49,19 @@ function ElNumeroExiste ($Pepe) {
 }
 
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
+
+function SumaArreglo {
+    $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    foreach ($i in $numeros) {
+        $ResultadoSuma = $ResultadoSuma + $i
+    }
+    Write-Output $ResultadoSuma
+}
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
 
 #Prueba
 
 #NumeroPar 10
 #divisible3y5
-ElNumeroExiste 5
+#ElNumeroExiste 5
+SumaArreglo
