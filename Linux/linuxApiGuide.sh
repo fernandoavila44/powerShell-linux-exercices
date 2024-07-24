@@ -36,10 +36,10 @@
 
 # 4.
 
-echo "Obteniendo datos de la API..."
-response=$(curl -s https://rickandmortyapi.com/api/character)
+# echo "Obteniendo datos de la API..."
+# response=$(curl -s https://rickandmortyapi.com/api/character)
 
-echo "$response" | jq -c '.results[]' | while read -r character; do
-    name=$(echo "$character" | jq -r '.name')
-    echo "Nombre del personaje: $name"
-done
+# echo "$response" | jq -c '.results[]' | while read -r character; do
+#     name=$(echo "$character" | jq -r '.name')
+#     echo "Nombre del personaje: $name"
+# done
