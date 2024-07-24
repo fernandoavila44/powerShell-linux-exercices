@@ -58,10 +58,20 @@ function SumaArreglo {
     Write-Output $ResultadoSuma
 }
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
+function DevolverParesArreglo {
+    $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    foreach ($i in $numeros) {
+        $ResultadoResiduo = $i % 2
 
+        if ($ResultadoResiduo -eq 0){
+            Write-Output $i
+        }
+    }
+}
 #Prueba
 
 #NumeroPar 10
 #divisible3y5
 #ElNumeroExiste 5
-SumaArreglo
+#SumaArreglo
+DevolverParesArreglo
