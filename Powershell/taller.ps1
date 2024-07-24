@@ -63,9 +63,7 @@ if (ExisteNumero -numero $numero -arreglo $numeros) {
 $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 function Suma{
-    param (
-        [int[]]$arreglo
-    )
+    param ([int[]]$arreglo)
 
     $suma = 0
     foreach ($numero in $arreglo) {
@@ -80,6 +78,21 @@ Write-Output "La suma del arreglo es: $sumaTotal"
 
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
 
+$numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
+function SumaPar{
+    param ([int[]]$arreglo)
+
+    $suma = 0
+    foreach ($numero in $arreglo) {
+        if ($numero % 2 -eq 0) {
+            $suma += $numero
+        }
+    }
+    return $suma
+}
+
+$sumaTotal = SumaPar -arreglo $numeros
+Write-Output "La suma es: $sumaTotal"
 
 
