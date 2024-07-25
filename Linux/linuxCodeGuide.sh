@@ -60,12 +60,12 @@
 #     echo "Eres menor de edad"
 # fi
 
-# If-else anidado
-# numero=10
-# if [ $numero -gt 0 ]; then
-#     echo "El número es positivo"
-# elif [ $numero -lt 0 ]; then
-#     echo "El número es negativo"
-# else
-#     echo "El número es cero"
-# fi
+#If-else anidado
+ numero=10
+ if [ $numero -gt 0 ]; then
+     echo "El número es positivo"
+ elif [ $numero -lt 0 ]; then
+     echo "El número es negativo"
+ else
+     echo "El número es cero"
+ fi
