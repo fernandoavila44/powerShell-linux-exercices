@@ -38,10 +38,27 @@ echo "$response" | jq
  }
 
  #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
+ErrorProvocado(){
+URL="https://jsonplaceholder.typicode.com/invalid-endpoint"
 
+# Realiza la solicitud GET a la API y captura la respuesta y el código de estado HTTP
+response=$(curl -s -w "%{http_code}" $URL)
+http_code="${response: -3}"
+response_body="${response::-3}"
+
+# Verifica si el código de estado HTTP indica un error
+if [[ "$http_code" -ne 200 ]]; then
+  echo "Error: La solicitud a la API falló con el código de estado HTTP $http_code"
+  exit 1
+fi
+
+# Procesa la respuesta JSON (en caso de que sea exitosa, lo que no ocurrirá en este caso)
+echo "$response_body" | jq .
+}
  #Exitos!!
 
 #MostrarUsuarios
 #MostrarTitulos
 #MostrarTitulosPorId
-PostEnApi
+#PostEnApi
+ErrorProvocado
