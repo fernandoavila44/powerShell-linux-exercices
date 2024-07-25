@@ -23,11 +23,25 @@ done
 response=$(curl -s "https://jsonplaceholder.typicode.com/posts" | jq ".[] | select(.id == $POST_ID)")
 echo $response | jq
  }
- #4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, utiliza jq para mostrar la respuesta del servidor.
+ #4. Utiliza curl para enviar un nuevo post a la API sjonplaceholder.typicode.com/posts. Luego, utiliza jq para mostrar la respuesta del servidor.
+ PostEnApi(){
+data='{"userID": "200",
+"id": "200",
+"title" : "PlaceHolder",
+"Body" : "HolderPlace"}'
+
+echo "Enviando datos a la API..."
+
+response=$(curl -X POST "Content-Type: application/json" -d "$data" https://jsonplaceholder.typicode.com/posts)
+echo "Datos obtenidos:"
+echo "$response" | jq 
+ }
+
  #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
 
  #Exitos!!
 
 #MostrarUsuarios
 #MostrarTitulos
-MostrarTitulosPorId
+#MostrarTitulosPorId
+PostEnApi
