@@ -29,15 +29,24 @@
  #3. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para 
  #encontrar y mostrar la publicación con un id específico.
 
- echo " "
-echo "Obteniendo datos de la API..."
-response=$(curl https://jsonplaceholder.typicode.com/posts)
+# echo " "
+# echo "Obteniendo datos de la API..."
+# response=$(curl https://jsonplaceholder.typicode.com/posts)
 
-echo " "
-echo "$response" | jq '.[] | select(.id == 53)'
+# echo " "
+# echo "$response" | jq '.[] | select(.id == 34)'
 
  #4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, 
  #utiliza jq para mostrar la respuesta del servidor.
+
+echo " "
+data='{"title": "foo", "body": "bar", "userId": 1}'
+echo "Enviando datos a la API..."
+response=$(curl -s -X POST -H "Content-Type: application/json" -d "$data" https://jsonplaceholder.typicode.com/posts)
+
+echo " "
+echo "Datos obtenidos:"
+echo "$response" | jq .
 
  #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" 
  #que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, 
