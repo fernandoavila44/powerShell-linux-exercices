@@ -39,17 +39,40 @@
  #4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, 
  #utiliza jq para mostrar la respuesta del servidor.
 
-echo " "
-data='{"title": "foo", "body": "bar", "userId": 1}'
-echo "Enviando datos a la API..."
-response=$(curl -s -X POST -H "Content-Type: application/json" -d "$data" https://jsonplaceholder.typicode.com/posts)
+# echo " "
+# data='{"title": "foo", "body": "bar", "userId": 1}'
+# echo "Enviando datos a la API..."
+# response=$(curl -s -X POST -H "Content-Type: application/json" -d "$data" https://jsonplaceholder.typicode.com/posts)
 
-echo " "
-echo "Datos obtenidos:"
-echo "$response" | jq .
+# echo " "
+# echo "Datos obtenidos:"
+# echo "$response" | jq .
 
  #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" 
  #que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, 
  #mostrando un mensaje personalizado en caso de fallo.
+
+# echo " "
+# echo "Obteniendo datos de la API..."
+# response=$(curl https://jsonplaceholder.typicode.com/users)
+
+# echo " "
+# echo "Datos obtenidos:"
+# echo "$response" | jq .
+
+echo " "
+echo "Obteniendo datos de la API..."
+response=$(curl -s -w "\n%{http_code}" https://jsonplaceholder.typicode.com/invalidEndpoint)
+
+http_code=$(echo "$response" | tail -n1)
+
+echo " "
+echo "Datos obtenidos:"
+if [ "$http_code" -ne 200 ]; then
+  echo "Error: Endpoint no encontrado. Codigo de estado HTTP: $http_code"
+  echo "$response_body" | jq
+else
+  echo "$response_body" | jq .
+fi
 
  #Exitos!!
