@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# 1. Solicitud GET a /users y formatear la lista de usuarios
+# 1. Hacemos un GET a /users para formatear la lista de usuarios
 echo "Lista de usuarios:"
 curl -s https://jsonplaceholder.typicode.com/users | jq "."
 
-# 2. Solicitud GET a /posts y filtrar solo los títulos de las publicaciones
+# 2. Hacemos GET a /posts para filtrar solo los títulos de las publicaciones
 echo "Títulos de las publicaciones:"
 curl -s https://jsonplaceholder.typicode.com/posts | jq ".[].title"
 
-# 3. Solicitud GET a /posts para encontrar y mostrar una publicación con un ID específico
+# 3. Hacemos GET a /posts para encontrar y mostrar una publicación con un ID específico
 POST_ID=1
 echo "Publicación con ID $POST_ID:"
 curl -s https://jsonplaceholder.typicode.com/posts/$POST_ID | jq "."
@@ -20,10 +20,9 @@ curl -s -X POST https://jsonplaceholder.typicode.com/posts -H "Content-Type: app
 # 5. Solicitud GET a un endpoint inexistente y manejar el error
 echo "Manejando un error:"
 RESPONSE=$(curl -s -o response.json -w "%{http_code}" https://jsonplaceholder.typicode.com/nonexistent_endpoint)
-if [ "$RESPONSE" -ne 200]; then
+if ["$RESPONSE" -ne 200]; then
   echo "Error: Received HTTP status code $RESPONSE"
 else
   jq "." response.json
 fi
 rm -f response.json
-
