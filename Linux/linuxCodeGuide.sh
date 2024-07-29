@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Definición de una variable
-# nombre="Juan"
+nombre="Juan"
+echo nombre
 
 # Definición de una variable numérica
-# edad=25
-
+edad=25
+echo $edad
 # Definición de una variable de solo lectura
 # readonly PI=3.1416
 
