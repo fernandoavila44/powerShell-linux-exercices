@@ -8,7 +8,7 @@ echo "Lista de usuarios"
 response=$(curl https://jsonplaceholder.typicode.com/users)
 echo "Datos obtenidos:"
 echo "$response" | jq .
-f
+
 
 
 #2. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para filtrar y mostrar solo los títulos de las publicaciones.
@@ -43,19 +43,3 @@ echo "Enviando un nuevo post:"
 response=$(curl -s -X POST -H "Content-Type: application/json; " -d "$data" https://jsonplaceholder.typicode.com/posts)
 echo "Datos obtenidos:"
 echo "$response" | jq .
-
-
-
-
-#5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
-
-echo "Manejando un error:"
-RESPONSE=$(curl -s -o response.json -w "%{http_code}" https://jsonplaceholder.typicode.com/nonexistent_endpoint)
-if [ "$RESPONSE" -ne 200]; then
-  echo "Error: Received HTTP status code $RESPONSE"
-else
-  jq "." response.json
-fi
-#rm -f response.json
-
-
