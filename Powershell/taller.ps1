@@ -125,5 +125,5 @@ function sumaArregloPares {
     return "La suma total de los numeros pares del arreglo es: $sumaTotal"
 }
 
-# Ejemplo de uso: llamamos a la función Get-Sum
+# Llamamos la funcion
 sumaArregloPares
