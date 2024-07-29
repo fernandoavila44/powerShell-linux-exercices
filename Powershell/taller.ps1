@@ -1,6 +1,7 @@
 # 1. Crear una funcion que me diga si un número es par o no
-
-
+Write-Output " "
+Write-Output "EJERCICIO NRO  1: **********************************************************************"
+Write-Output " "
 # Se crea la funcion que me evaluará si un número es o no par.
 function numeroPar {
     # declaramos la variable num que es de tipo entero la cual recibe por parámetro un número.
@@ -18,15 +19,16 @@ function numeroPar {
 # Hacemos el llamado de la función y le enviamos un número par y otro impar para evaluar el resultado
 numeroPar -num 10
 numeroPar -num 21
+Write-Output " "
 
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
 # Devuelve FizzBuzz si el número es divisible por 3 y por 5.
-
+Write-Output "EJERCICIO NRO  2: **********************************************************************"
 # Creamos un ciclo for para recorrer los número del 1 al 100, cada número me lo evaluará con el módulo
 # dependiendo de si lo que necesito es saber si es divisible por 3, 5 o ambos
-
+Write-Output " "
 for ($i = 1; $i -le 100; $i++) {
 
     #Primero determinados si el número es divisible por 3 y 5
@@ -48,10 +50,11 @@ for ($i = 1; $i -le 100; $i++) {
         Write-Output "$i : No aplica"
     }
 }
-   
+Write-Output " " 
 # 3.Dado el siguiente arreglo, crear una funcion que me diga si el número que pasamos por parámetro existe en el arreglo
 # $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-
+Write-Output "EJERCICIO NRO  3: **********************************************************************"
+Write-Output " "
 $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 #Definimos la funcion Encontrar a la cual le enviamos por parámetro un número
@@ -74,8 +77,10 @@ function Encontrar {
 Encontrar -num 9
 Encontrar -num 21
 
+Write-Output " "
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
-
+Write-Output "EJERCICIO NRO  4: **********************************************************************"
+Write-Output " "
 # Defino el arreglo de números
 $numeritos = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
@@ -98,9 +103,11 @@ function sumaArreglo {
 # Ejemplo de uso: llamamos a la función Get-Sum
 sumaArreglo 
 
+Write-Output " "
 
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
-
+Write-Output "EJERCICIO NRO  5: **********************************************************************"
+Write-Output " "
 # Defino el arreglo de números
 $numeritos = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
