@@ -1,45 +1,41 @@
-#!/bin/bash
+# 1. Realizar una solicitud GET a la API jsonplaceholder.typicode.com/users y utilizar jq para formatear y mostrar la lista de usuarios.
+echo "1. Lista de usuarios:"
+curl -s https://jsonplaceholder.typicode.com/users | jq
+echo -e "\n"
 
-# Utilizar la siguiente API https://jsonplaceholder.typicode.com/
+# 2. Realizar una solicitud GET a la API jsonplaceholder.typicode.com/posts y utilizar jq para filtrar y mostrar solo los títulos de las publicaciones.
+echo "2. Títulos de las publicaciones:"
+curl -s https://jsonplaceholder.typicode.com/posts | jq '.[].title'
+echo -e "\n"
 
- #1. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/users y utiliza jq para formatear y mostrar la lista de usuarios.
+# 3. Realizar una solicitud GET a la API jsonplaceholder.typicode.com/posts y utilizar jq para encontrar y mostrar la publicación con un id específico.
+POST_ID=1
+echo "3. Publicación con ID = $POST_ID:"
+curl -s https://jsonplaceholder.typicode.com/posts | jq ".[] | select(.id == $POST_ID)"
+echo -e "\n"
 
-echo "Lista de usuarios"
-response=$(curl https://jsonplaceholder.typicode.com/users)
-echo "Datos obtenidos:"
-echo "$response" | jq .
+# 4. Utilizar curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, utilizar jq para mostrar la respuesta del servidor.
+echo "4. Enviar un nuevo post y mostrar la respuesta:"
+curl -s -X POST https://jsonplaceholder.typicode.com/posts \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Trabajo",
+    "body": "bar",
+    "userId": 1
+}' | jq
+echo -e "\n"
+
+# 5. Realizar una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utilizar jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
+echo "5. Manejo de error intencional:"
+curl -s -o response.json -w "%{http_code}" https://jsonplaceholder.typicode.com/invalidendpoint | {
+  read code
+  if [ "$code" -ne 200 ]; then
+    echo "Error: received HTTP status code $code"
+  else
+    cat response.json | jq
+  fi
+  rm response.json
+}
+echo -e "\n"
 
 
-
-#2. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para filtrar y mostrar solo los títulos de las publicaciones.
- 
-echo "Títulos de las publicaciones:"
-response=$(curl https://jsonplaceholder.typicode.com/posts)
-echo "Datos obtenidos:"
-echo "$response" | jq ".[].title"
-
-
-
-
-#3. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para encontrar y mostrar la publicación con un id específico.
- 
-POST_ID=2
-echo "Publicación con ID $POST_ID:"
-response=$(curl https://jsonplaceholder.typicode.com/posts/$POST_ID)
-echo "Datos obtenidos:"
-echo "$response" | jq .
-
-
-
-
-#4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, utiliza jq para mostrar la respuesta del servidor.
- 
-data='{
-    "title": "nuevo post",
-    "body": "Esto es un ejemplo post desde bash",
-    "userId": 2
-}'
-echo "Enviando un nuevo post:"
-response=$(curl -s -X POST -H "Content-Type: application/json; " -d "$data" https://jsonplaceholder.typicode.com/posts)
-echo "Datos obtenidos:"
-echo "$response" | jq .
