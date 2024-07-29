@@ -1,3 +1,7 @@
+# 2. Programa FizzBuzz con las siguientes condiciones 
+# Devuelve Fizz si el número es divisible por 3.
+# Devuelve Buzz si el número es divisible por 5.
+# Devuelve FizzBuzz si el número es divisible por 3 y por 5.
 for ($i = 1; $i -le 100; $i++) {
     if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
         Write-Output "FizzBuzz"

@@ -1,12 +1,8 @@
-# Definimos el arreglo de números
-$numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-
-# Definimos una función llamada Get-SumOfEvenNumbers
-function Get-SumOfEvenNumbers {
-    # Filtramos los números pares y calculamos la suma
-    $sumaPares = $numeros | Where-Object { $_ % 2 -eq 0 } | Measure-Object -Sum | Select-Object -ExpandProperty Sum
-    return $sumaPares
+# 5. Modificar la función anterior para que me devuelva
+# solo la suma de los números pares
+function Suma-Pares {
+    return ($numeros | Where-Object {$_ % 2 -eq 0} | Measure-Object -Sum).Sum
 }
 
-# Ejemplo de uso: llamamos a la función Get-SumOfEvenNumbers
-Get-SumOfEvenNumbers
+# metodo para verificar por consola el resultado
+Suma-Pares

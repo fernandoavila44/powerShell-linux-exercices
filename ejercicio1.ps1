@@ -1,21 +1,13 @@
-# Definimos una función llamada Es-Par
-function Get-Par {
-    # Definimos un parámetro de entrada llamado $numero, que es de tipo entero
-    param (
-        [int]$numero
-    )
-
-    # Utilizamos el operador módulo (%) para comprobar si el número es divisible por 2
+# 1. Crear una funcion que me diga si un número es par o no
+function Es-Par {
+    param ($numero)
     if ($numero % 2 -eq 0) {
-        # Si el residuo de la división por 2 es 0, el número es par
-        return "$numero es par."
+        return "$numero es Par"
     } else {
-        # Si el residuo de la división por 2 no es 0, el número es impar
-        return "$numero es impar."
+        return "$numero es Impar"
     }
 }
 
-# Ejemplo de uso: llamamos a la función Es-Par con el número 4
-Get-Par -numero 4
-# Ejemplo de uso: llamamos a la función Es-Par con el número 7
-Get-Par -numero 7
+# asi verificamos en consola si es correcto o no el resultado
+Write-Output (Es-Par 6)
+Write-Output (Es-Par 1)

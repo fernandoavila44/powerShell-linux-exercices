@@ -1,19 +1,17 @@
-# Definimos el arreglo de números
+
+# 3.Dado el siguiente arreglo, crear una funcion que me diga 
+#si el número que pasamos por parámetro existe en el arreglo
 $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-# Definimos una función llamada Find-Number
-function Find-Number {
-    param (
-        [int]$numero
-    )
-
-    # Verificamos si el número existe en el arreglo
-    if ($numeros -contains $numero) {
-        return "El número $numero existe en el arreglo."
+function Existe-Numero {
+    param ($num)
+    if ($numeros -contains $num) {
+        return "El número $num existe en el arreglo."
     } else {
-        return "El número $numero no existe en el arreglo."
+        return "El número $num no existe en el arreglo."
     }
 }
-Find-Number -numero 5
-Find-Number -numero 11
 
+# Ejemplo de uso
+Write-Output (Existe-Numero 5)
+Write-Output (Existe-Numero 112)

@@ -1,12 +1,9 @@
-# Definimos el arreglo de números
-$numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+# 4. Dado el arreglo anterior crear una funcion 
+#que me devuelva la suma de todos los valores del arreglo
 
-# Definimos una función llamada Get-Sum
-function Get-Sum {
-    # Calculamos la suma de todos los valores del arreglo
-    $suma = $numeros | Measure-Object -Sum | Select-Object -ExpandProperty Sum
-    return $suma
+function Suma-Total {
+    return ($numeros | Measure-Object -Sum).Sum
 }
 
-# Ejemplo de uso: llamamos a la función Get-Sum
-Get-Sum
+# metodo para verificar por conola el resultado
+Suma-Total
