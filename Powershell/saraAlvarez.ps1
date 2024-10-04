@@ -10,6 +10,7 @@ function EsPar {
         }
 }
 
+
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
 # Devuelve Buzz si el número es divisible por 5.
