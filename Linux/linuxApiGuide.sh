@@ -7,13 +7,13 @@
 
 # 1.Api fetching
 
-# echo "Obteniendo datos de la API..."
+ echo "Obteniendo datos de la API..."
 
-# response=$(curl https://rickandmortyapi.com/api/character)
+ response=$(curl https://rickandmortyapi.com/api/character)
 
-# echo "Datos obtenidos:"
+ echo "Datos obtenidos:"
 
-# echo "$response" | jq .
+ echo "$response" | jq .
 
 # 2.Api Post 
 
