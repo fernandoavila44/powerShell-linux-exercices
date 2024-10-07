@@ -56,6 +56,6 @@
 
             }
          }
-         Write-Host "La sumar de todos lo valores pares es " $sumapares
+         Write-Host "La suma de todos lo valores pares es " $sumapares
     }
       SumaNumerosParses
