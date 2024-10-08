@@ -34,6 +34,27 @@
     #4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. 
     #Luego, utiliza jq para mostrar la respuesta del servidor.
         
- #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
+        #data='{"nombreUser": "StivenCatsano"}'
+        #echo "Enviando datos a la API..."
+        #response=$(curl -X POST "Content-Type: application/json" -d "$data" https://jsonplaceholder.typicode.com/posts)
+        #echo "Datos obtenidos:"
+         #echo "$response" | jq .
+
+    #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" 
+    #que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, 
+    #mostrando un mensaje personalizado en caso de fallo.
+                
+         echo "Cargando usuario..."
+         id=1
+        response=$(curl https://jsonplaceholder.typicode.com/users)
+         echo "Dato cargado:"
+         calle=$(echo "$response" | jq -r --arg id "$id" '.[] | select(.id == ($id | tonumber)) | .address.streett') # .address.streett pongo una "t" al final para generar un error
+             
+              if [ -z "$calle" ] || [ "$calle" == "null" ]; then
+                     echo "Error. El dato no se encuentra o es null."
+                else
+                     echo "Street: $calle"
+                fi
+           
 
  #Exitos!!
