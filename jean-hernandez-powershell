@@ -1,0 +1,121 @@
+# 1. Crear una funcion que me diga si un número es par o no
+
+#function EsPar {
+ #   param (
+  #      [int]$numero
+ #   )
+
+#   if ($numero % 2 -eq 0) {
+#        $resultado = "$numero es par."
+#   } else {
+#        $resultado = "$numero es impar."
+#    }
+
+#    return $resultado
+#}
+#$numero = 4 
+#$resultadoPar = EsPar $numero
+#Write-Output $resultadoPar
+
+
+# 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
+# Devuelve Fizz si el número es divisible por 3.
+# Devuelve Buzz si el número es divisible por 5.
+# Devuelve FizzBuzz si el número es divisible por 3 y por 5.
+
+#function FizzBuzz {
+#    for ($i = 1; $i -le 100; $i++) {
+#        if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+#            Write-Output "FizzBuzz"
+#        } elseif ($i % 3 -eq 0) {
+#            Write-Output "Fizz"
+#        } elseif ($i % 5 -eq 0) {
+#            Write-Output "Buzz"
+#        } else {
+#            Write-Output $i
+#        }
+#    }
+#}
+
+#FizzBuzz
+
+# 3.Dado el siguiente arreglo, crear una funcion que me diga si el número que pasamos por parámetro existe en el arreglo
+# $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+#function NumExist {
+#    param (
+#        [int]$num,
+#        [int[]]$array = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+#    )
+#    
+#    if ($array -contains $num) {
+#        return "$num existe en el arreglo."
+#    } else {
+#        return "$num no existe en el arreglo."
+#    }
+#}
+
+#$numABuscar = 5 
+#$resultadoExistencia = NumExist $numABuscar
+#Write-Output $resultadoExistencia
+
+# 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
+
+#function SumaNumeros {
+#    param (
+#        [int[]]$array = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+#    )
+    
+#    $suma = ($array | Measure-Object -Sum).Sum
+#    return "La suma de los valores del arreglo es: $suma"
+#}
+#$resultadoSuma = SumaNumeros
+#Write-Output $resultadoSuma
+
+# 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
+
+#function SumaPares {
+#    param (
+#        [int[]]$array = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+#    )
+    
+#    $sumaPares = ($array | Where-Object { $_ % 2 -eq 0 } | Measure-Object -Sum).Sum
+#    return "La suma de los números pares del arreglo es: $sumaPares"
+#}
+
+#$resultadoSumaPares = SumaPares
+#Write-Output $resultadoSumaPares
+
+
+
+
+# Utilizar la siguiente API https://jsonplaceholder.typicode.com/
+
+ #1. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/users y utiliza jq para formatear y mostrar la lista de usuarios.
+ #este es para formatear
+ curl -s https://jsonplaceholder.typicode.com/users | jq '.'
+
+ #2. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para filtrar y mostrar solo los títulos de las publicaciones.
+ 
+ curl -s https://jsonplaceholder.typicode.com/posts | jq '.[].title'
+ #3. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/posts y utiliza jq para encontrar y mostrar la publicación con un id específico.
+curl -s https://jsonplaceholder.typicode.com/posts/5 | jq '.'
+ #4. Utiliza curl para enviar un nuevo post a la API jsonplaceholder.typicode.com/posts. Luego, utiliza jq para mostrar la respuesta del servidor.
+ curl -s -X POST https://jsonplaceholder.typicode.com/posts \
+-H "Content-Type: application/json" \
+-d '{"title": "Nuevo Post", "body": "Este es el cuerpo del nuevo post.", "userId": 1}' | jq '.'
+ 
+ #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
+curl -s -w "%{http_code}" -o response.json https://jsonplaceholder.typicode.com/nonexistent
+if [ $? -ne 0 ]; then
+    echo "Error al realizar la solicitud"
+else
+    http_code=$(cat response.json | jq '.')
+    if [ "$http_code" != "200" ]; then
+        echo "Se produjo un error: $http_code. Mensaje personalizado aquí."
+    else
+        cat response.json | jq '.'
+    fi
+fi
+ #Exitos!!
+
