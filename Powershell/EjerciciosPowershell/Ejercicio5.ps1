@@ -1,6 +1,4 @@
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
-
-$numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 function SumarPares {
     param([int[]]$numeros)
     

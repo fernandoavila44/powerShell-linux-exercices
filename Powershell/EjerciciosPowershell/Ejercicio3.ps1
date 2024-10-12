@@ -13,5 +13,5 @@ function ExisteNumero {
     }
 }
 
-ExisteNumero(4)
-ExisteNumero(25)
+ExisteNumero(2)
+ExisteNumero(13)
