@@ -2,7 +2,7 @@
 
 # Definición de una variable
 nombre="Juan"
-# echo $nombre
+ echo $nombre
 
 # Definición de una variable numérica
 edad=25

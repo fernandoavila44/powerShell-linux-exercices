@@ -1,5 +1,6 @@
 # 1. Crear una funcion que me diga si un número es par o no
-function Es-Par {
+$numero=8
+function esPar {
     param (
         [int]$numero
     )
@@ -10,9 +11,7 @@ function Es-Par {
         Write-Host "$numero es un número impar."
     }
 }
-
-Es-Par 8
-Es-Par 7
+esPar
 
 # 2. Escribe un programa que imprima los números del 1 al 100, pero aplicando las siguientes normas:
 # Devuelve Fizz si el número es divisible por 3.
@@ -35,7 +34,8 @@ for ($i = 1; $i -le 100; $i++) {
 # $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 $numeros = @(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-function Existe-Numero {
+$numero=25
+function encontrar_numero {
     param (
         [int]$numero
     )
@@ -47,23 +47,23 @@ function Existe-Numero {
     }
 }
 
-Existe-Numero 5
-Existe-Numero 15
+encontrar_numero
 
 # 4. Dado el arreglo anterior crear una funcion que me devuelva la suma de todos los valores del arreglo
 
-function Suma-Total {
-    return ($numeros | Measure-Object -Sum).Sum
+function sumaArreglo {
+    $suma= ($numeros | Measure-Object -Sum).Sum
+    return "La suma total del arreglo es: $suma"
 }
-
-Suma-Total
+sumaArreglo
 
 # 5. Modificar la función anterior para que me devuelva solo la suma de los números pares
 
-function Suma-Pares {
+function SumaPares {
     $pares = $numeros | Where-Object { $_ % 2 -eq 0 }
-    return ($pares | Measure-Object -Sum).Sum
+    $suma= ($pares | Measure-Object -Sum).Sum
+    return "La suma de los números pares es: $suma"
 }
 
-Suma-Pares
+SumaPares
 
