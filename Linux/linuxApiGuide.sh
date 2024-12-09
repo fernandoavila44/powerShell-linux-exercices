@@ -9,11 +9,7 @@
 
 # echo "Obteniendo datos de la API..."
 
-# response=$(curl https://rickandmortyapi.com/api/character)
-
-# echo "Datos obtenidos:"
-
-# echo "$response" | jq .
+# 2
 
 # 2.Api Post 
 
