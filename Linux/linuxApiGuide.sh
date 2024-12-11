@@ -2,7 +2,7 @@
 
 # Para instalar jq en gitbash siguen los siguientes pasos:
 # 1. abrir gitbash como administrador
-# 2. ejecutar el siguiente comando: curl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe
+# 2. ejecutar el siguiente comando: 
 # 3. jq queda instalado
 
 # 1.Api fetching
@@ -42,4 +42,4 @@
 # echo "$response" | jq -c '.results[]' | while read -r character; do
 #     name=$(echo "$character" | jq -r '.name')
 #     echo "Nombre del personaje: $name"
-# done
+# donecurl -L -o /usr/bin/jq.exe https://github.com/stedolan/jq/releases/latest/download/jq-win64.exe
