@@ -38,6 +38,9 @@ echo "Datos en la API:"
 echo "$response" | jq .
 echo "Fin de la carga"
 
+echo "//////////////////"
+
+
 #5. Realiza una solicitud GET a la API jsonplaceholder.typicode.com/"cualquier endpoint" que devuelva un error intencionalmente. Utiliza jq para detectar y manejar el error, mostrando un mensaje personalizado en caso de fallo.
 
 echo "Cargando datos desde la API"
@@ -47,6 +50,8 @@ if [ "$response" -ne 200 ]; then
 else data=$(curl -s https://jsonplaceholder.typicode.com/nonexistent) 
     echo "$data" | jq . 
 fi
+
+echo "//////////////////"
 
 
 #Exitos!!
